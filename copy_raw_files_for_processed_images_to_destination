@@ -1,0 +1,12 @@
+<#
+    This script will open the folder that has all the processed images(processed images = photoshop file format)
+    and iterate through the files it finds in that folder
+    For each file we find, we will copy the original raw image to a new folder called: destination
+    This can be handy if a request came in to retrieve the unprocessed images from a published project.
+    Instead of having to sift through hundreds of unpublished raw images, we can get the raw images for the processed/published images.
+#>
+Get-ChildItem("ENTER PATH FOR PSD FILES") | foreach-object{
+    $source      = "ENTER PATH FOR RAW IMAGES"+$_.BaseName+".arw"
+    $destination = "ENTER PATH FOR THE DESTINATION"
+    copy -path $source -destination $destination
+}
