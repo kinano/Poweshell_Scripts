@@ -9,4 +9,5 @@ allPlaylists = api.get_all_user_playlist_contents()
 
 for playlist in allPlaylists:
 	for track in playlist['tracks']:
-		api.add_store_tracks(track['track']['storeId'])
+		if 'track' in track and 'storeId' in track['track']:
+			api.add_store_tracks(track['track']['storeId'])
